@@ -1,0 +1,16 @@
+<h1>Profile Page</h1>
+<div>
+  <p><%= current_user.first_name %></p>
+  <p><%= current_user.last_name %></p>
+  <p><%= current_user.email %></p>
+</div>
+
+<% if current_user.recipes.any? %>
+  <h3>My Recipes</h3>
+  <% current_user.recipes.each do |recipe| %>
+    <p><%= recipe.name %> - <%= recipe.instructions %></p>
+  <% end %>
+<% else %>
+  <h4>You don't have any recipes yet!</h4>
+<% end %>
+<%= link_to "Add New Recipe", new_recipe_path %>

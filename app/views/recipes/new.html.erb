@@ -1,0 +1,7 @@
+<h1>New Recipe</h1>
+<%= form_for @recipe do |f| %>
+  <%= f.text_field :name, placeholder: "Name" %><br>
+  <%= f.text_field :instructions, placeholder: "Instructions" %><br>
+  <hr>
+  <%= f.submit "Save Recipe" %>
+<% end %>

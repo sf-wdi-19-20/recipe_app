@@ -1,0 +1,7 @@
+<h1><%= @recipe.name %></h1>
+<hr>
+<p><%= @recipe.instructions %></p>
+
+<% if current_user && current_user.recipes.include?(@recipe) %>
+  <p><%= link_to "Edit Recipe", edit_recipe_path(@recipe) %></p>
+<% end %>
