@@ -18,7 +18,6 @@ class RecipesController < ApplicationController
   def create
     # recipe = Recipe.create(recipe_params)
     # current_user.recipes << recipe
-    
     recipe = current_user.recipes.create(recipe_params)
     redirect_to recipe_path(recipe)
   end
@@ -28,35 +27,49 @@ class RecipesController < ApplicationController
     render :show
   end
 
-  # show form to edit one recipe
+  # form to edit one recipe
   def edit
     @recipe = Recipe.find(params[:id])
     if current_user.recipes.include? @recipe
       render :edit
     else
-      # redirect_to '/profile'
-      redirect_to profile_path
+      # if user tries to edit recipe that doesn't belong to them
+      # log them out
+      session[:user_id] = nil
+      redirect_to login_path
     end
   end
 
+  # updates recipe in db
   def update
     recipe = Recipe.find(params[:id])
     if current_user.recipes.include? recipe
       recipe.update_attributes(recipe_params)
       redirect_to recipe_path(recipe)
     else
-      redirect_to profile_path
+      # if user tries to update recipe that doesn't belong to them
+      # log them out
+      session[:user_id] = nil
+      redirect_to login_path
     end
   end
 
   def destroy
-    # find recipe first
-    # also check current_user!
-    # recipe.destroy
+    recipe = Recipe.find(params[:id])
+    if current_user.recipes.include? recipe
+      recipe.destroy
+      redirect_to profile_path
+    else
+      # if user tries to destroy recipe that doesn't belong to them
+      # log them out
+      session[:user_id] = nil
+      redirect_to login_path
+    end
   end
 
   private
     def recipe_params
       params.require(:recipe).permit(:name, :instructions)
     end
+
 end

@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
 
   # recipes routes
-  resources :recipes, except: [:index]
-
   root "recipes#index"
+  resources :recipes, except: [:index]
   
 end
