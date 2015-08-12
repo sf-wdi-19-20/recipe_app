@@ -11,25 +11,26 @@
 </head>
 <body>
   <div class="container">
-    <br>
-    <%= link_to "Home", root_path %>
-    <!-- creates spacing between links -->
-    &nbsp;&nbsp|&nbsp;&nbsp
-    
-    <% if current_user %>
-      <%= link_to "Profile", profile_path %>
+    <div class="simple-nav">
+      <%= link_to "Home", root_path %>
       <!-- creates spacing between links -->
-      &nbsp;&nbsp|&nbsp;&nbsp
-      <%= link_to "+ Recipe", new_recipe_path %>
-      <!-- creates spacing between links -->
-      &nbsp;&nbsp|&nbsp;&nbsp
-      <%= link_to "Log Out", logout_path %>
-    <% else %>
-      <%= link_to "Sign Up", signup_path %>
-      <!-- creates spacing between links -->
-      &nbsp;&nbsp|&nbsp;&nbsp
-      <%= link_to "Log In", login_path %>
-    <% end %>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      
+      <% if current_user %>
+        <%= link_to "Profile", profile_path %>
+        <!-- creates spacing between links -->
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%= link_to "+ Recipe", new_recipe_path %>
+        <!-- creates spacing between links -->
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%= link_to "Log Out", logout_path %>
+      <% else %>
+        <%= link_to "Sign Up", signup_path %>
+        <!-- creates spacing between links -->
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%= link_to "Log In", login_path %>
+      <% end %>
+    </div>
 
     <%= yield %>
   </div>
