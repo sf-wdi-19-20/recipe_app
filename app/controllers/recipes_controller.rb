@@ -18,8 +18,17 @@ class RecipesController < ApplicationController
   def create
     # recipe = Recipe.create(recipe_params)
     # current_user.recipes << recipe
-    recipe = current_user.recipes.create(recipe_params)
-    redirect_to recipe_path(recipe)
+    # recipe = current_user.recipes.create(recipe_params)
+    # redirect_to recipe_path(recipe)
+    
+    recipe = current_user.recipes.new(recipe_params)
+    if recipe.save
+      flash[:notice] = "Successfully created recipe."
+      redirect_to recipe_path(recipe)
+    else
+      flash[:error] = recipe.errors.full_messages.join(", ")
+      redirect_to new_recipe_path
+    end
   end
 
   def show
