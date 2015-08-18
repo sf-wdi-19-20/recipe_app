@@ -11,6 +11,16 @@
           </span>
         </h4>
         <p><%= recipe.instructions %></p>
+        <p>
+          <a href="javascript:void(0)" class="favorite" data-id="<%= recipe.id %>">
+            <!-- check if current_user has already favorited recipe to show correct star icon -->
+            <% if current_user.favorite_recipes.include? recipe %>
+              <span class="glyphicon glyphicon-star"></span>
+            <% else %>
+              <span class="glyphicon glyphicon-star-empty"></span>
+            <% end %>
+          </a>
+        </p>
         <hr>
       <% end %>
     <% else %>

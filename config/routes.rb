@@ -14,5 +14,8 @@ Rails.application.routes.draw do
   # recipes routes
   root "recipes#index"
   resources :recipes, except: [:index]
+
+  # favorites routes
+  resources :favorites, only: [:create]
   
 end

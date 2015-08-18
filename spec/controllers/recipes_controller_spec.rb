@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe RecipesController, type: :controller do
   # before do
   #   user_params = Hash.new
-  #   user_params[:first_name] = Faker::Name.first_name
-  #   user_params[:last_name] = Faker::Name.last_name
-  #   user_params[:email] = Faker::Internet.email
-  #   user_params[:password] = Faker::Lorem.words(2).join
+  #   user_params[:first_name] = FFaker::Name.first_name
+  #   user_params[:last_name] = FFaker::Name.last_name
+  #   user_params[:email] = FFaker::Internet.email
+  #   user_params[:password] = FFaker::Lorem.words(2).join
   #   current_user = User.create(user_params)
   #   session[:user_id] = current_user.id
   # end
